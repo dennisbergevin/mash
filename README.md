@@ -185,6 +185,9 @@ mash --tree --tag="dev"
 
 ### Skip intro
 
+> [!NOTE]  
+> You can also set whether to skip intro screen within the config file.
+
 To skip the intro screen:
 
 ```bash
