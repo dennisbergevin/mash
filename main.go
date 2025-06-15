@@ -9,6 +9,7 @@ import (
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/huh"
+	"github.com/charmbracelet/lipgloss"
 )
 
 func main() {
@@ -107,23 +108,38 @@ func main() {
 func printHelp() {
 	appName := rootStyle.Render("mash")
 
-	helpText := fmt.Sprintf(
-		"%s - A customizable command launcher\n\n"+
-			"Usage:\n  mash [options]\n\n"+
-			"Options:\n"+
-			"  --help, -h         Show this help menu\n"+
-			"  --tree             Display a tree view of all commands and tags\n"+
-			"  --tag              Show only items that have tags (any tags)\n"+
-			"  --tag=\"TAG1;TAG2\"  Show items with specified tags\n"+
-			"  --skip-intro       Skip splash screen\n"+
-			"  --global, -g       Load config from ~/.config/mash/config.json\n\n"+
-			"Examples:\n"+
-			"  mash --tag=dev\n"+
-			"  mash --tree --tag=\"tools;infra\"\n"+
-			"  mash --global --skip-intro\n",
-		appName)
+	// Define styles
+	sectionTitle := lipgloss.NewStyle().Foreground(lipgloss.Color("62")).Bold(true)
+	description := lipgloss.NewStyle().Faint(true)
 
-	fmt.Println(helpText)
+	borderBox := lipgloss.NewStyle().
+		Border(lipgloss.RoundedBorder()).
+		BorderForeground(lipgloss.Color("62")). // Orange border
+		Padding(1, 2).
+		Margin(1, 0)
+
+	// Help content
+	var b strings.Builder
+	fmt.Fprintf(&b, "%s - A customizable command launcher\n\n", appName)
+
+	fmt.Fprintln(&b, sectionTitle.Render("Usage"))
+	fmt.Fprintln(&b, "  mash [options]\n")
+
+	fmt.Fprintln(&b, sectionTitle.Render("Options"))
+	fmt.Fprintln(&b, "  --help, -h         "+description.Render("Show this help menu"))
+	fmt.Fprintln(&b, "  --tree             "+description.Render("Display a tree view of all commands and tags"))
+	fmt.Fprintln(&b, "  --tag              "+description.Render("Show only items that have tags (any tags)"))
+	fmt.Fprintln(&b, "  --tag=\"TAG1;TAG2\"  "+description.Render("Show items with specified tags"))
+	fmt.Fprintln(&b, "  --skip-intro       "+description.Render("Skip splash screen"))
+	fmt.Fprintln(&b, "  --global, -g       "+description.Render("Load config from ~/.config/mash/config.json"))
+
+	fmt.Fprintln(&b, "\n"+sectionTitle.Render("Examples"))
+	fmt.Fprintln(&b, "  mash --tag=dev")
+	fmt.Fprintln(&b, "  mash --tree --tag=\"tools;infra\"")
+	fmt.Fprintln(&b, "  mash --global --skip-intro")
+
+	// Print bordered help menu
+	fmt.Println(borderBox.Render(b.String()))
 }
 
 func splashScreen() *huh.Note {
