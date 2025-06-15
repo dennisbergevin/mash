@@ -26,9 +26,9 @@ func main() {
 			skipIntro = true
 		case arg == "--tree":
 			showTree = true
-		case arg == "--global":
+		case arg == "--global" || arg == "-g":
 			useGlobal = true
-		case arg == "--help":
+		case arg == "--help" || arg == "-h":
 			printHelp()
 			return
 		case strings.HasPrefix(arg, "--tag="):
@@ -111,12 +111,12 @@ func printHelp() {
 		"%s - A customizable command launcher\n\n"+
 			"Usage:\n  mash [options]\n\n"+
 			"Options:\n"+
-			"  --help             Show this help menu\n"+
+			"  --help, -h         Show this help menu\n"+
 			"  --tree             Display a tree view of all commands and tags\n"+
 			"  --tag              Show only items that have tags (any tags)\n"+
 			"  --tag=\"TAG1;TAG2\"  Show items with specified tags\n"+
 			"  --skip-intro       Skip splash screen\n"+
-			"  --global           Load config from ~/.config/mash/config.json\n\n"+
+			"  --global, -g       Load config from ~/.config/mash/config.json\n\n"+
 			"Examples:\n"+
 			"  mash --tag=dev\n"+
 			"  mash --tree --tag=\"tools;infra\"\n"+
