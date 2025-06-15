@@ -177,7 +177,7 @@ To display a tree view of only tagged items in the respective config file:
 mash --tree --tag
 ```
 
-To display a tree view of items with specific items in the respective config file:
+To display a tree view of items with specific tags in the respective config file:
 
 ```bash
 mash --tree --tag="dev"
