@@ -55,7 +55,7 @@ Or grab a binary from [the latest release](https://github.com/dennisbergevin/mas
 
 Create a `.mash.json` anywhere in the directory tree (at or above the current working directory). The config file closest to the current working directory will be preferred.
 
-This enables you to have different configs for different parent directories, such as one for a specific repository, one for personal projects, one for a global list, etc.
+This enables you to have different configs for different parent directories, such as one for a specific repository, one for personal projects, one for work scripts, etc.
 
 For global configurations you can create a `config.json` file in the `~/.config/mash/` directory.
 
