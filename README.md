@@ -1,7 +1,9 @@
+<div align="center">
 <h1>️  mash  </h1>
 <h5 align="center">
 A customizable command launcher for storing and executing commands.
 </h5>
+</div>
 <br>
 <div align="center">
   <img alt="Mash logo" src="./assets/mash-logo.png">
@@ -12,6 +14,8 @@ A customizable command launcher for storing and executing commands.
 - 📓 A customizable interactive list view of executable commands
 - 🌲 Tree view of commands
 - 🏷 Filterable list tagging
+
+![Demo](./assets/mash-demo.gif)
 
 #### Table of Contents
 
