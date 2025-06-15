@@ -167,6 +167,8 @@ To display a tree view of items in the respective config file:
 > [!NOTE]  
 > You can set the color of the tag, title, and description shown in the tree view within the config file.
 
+![Mash tree](./assets/mash-tree.png)
+
 ```bash
 mash --tree
 ```
