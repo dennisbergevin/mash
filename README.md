@@ -59,6 +59,9 @@ This enables you to have different configs for different parent directories, suc
 
 For global configurations you can create a `config.json` file in the `~/.config/mash/` directory.
 
+> [!NOTE]  
+> The "cmd" property is where you specify the command to execute. If you prefix with "cd:" followed by a filepath, you can open a new shell in that path. Otherwise, `mash` executes the provided command and returns to the original directory where `mash` was called.
+
 The content should be in the following format:
 
 ```json
