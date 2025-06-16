@@ -123,9 +123,9 @@ func printHelp() {
 	fmt.Fprintf(&b, "%s - A customizable command launcher\n\n", appName)
 
 	fmt.Fprintln(&b, sectionTitle.Render("Usage"))
-	fmt.Fprintln(&b, "  mash [options]\n")
+	fmt.Fprintln(&b, "  mash [options]")
 
-	fmt.Fprintln(&b, sectionTitle.Render("Options"))
+	fmt.Fprintln(&b, "\n"+sectionTitle.Render("Options"))
 	fmt.Fprintln(&b, "  --help, -h         "+description.Render("Show this help menu"))
 	fmt.Fprintln(&b, "  --tree             "+description.Render("Display a tree view of all commands and tags"))
 	fmt.Fprintln(&b, "  --tag              "+description.Render("Show only items that have tags (any tags)"))
