@@ -1,0 +1,34 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - name: setup go
+        uses: actions/setup-go@v5.5.0
+        with:
+          go-version: stable
+      - name: Install dependencies
+        run: go get .
+      - name: build
+        run: go build -v ./...
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+      - name: setup go
+        uses: actions/setup-go@v5.5.0
+        with:
+          go-version: stable
+      - name: Install dependencies
+        run: go get .
+      - name: test
+        run: go test -v
