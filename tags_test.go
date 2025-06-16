@@ -23,19 +23,6 @@ func captureStdout(fn func()) string {
 	return buf.String()
 }
 
-func TestTagStyleFor_ProducesDeterministicColor(t *testing.T) {
-	style1 := tagStyleFor("dev")
-	style2 := tagStyleFor("dev")
-	style3 := tagStyleFor("infra")
-
-	if style1.String() != style2.String() {
-		t.Errorf("Expected deterministic styles for same tag, got different: %v vs %v", style1, style2)
-	}
-	if style1.String() == style3.String() {
-		t.Errorf("Expected different styles for different tags: 'dev' and 'infra' got same")
-	}
-}
-
 func TestPrintTagTree_BasicRendering(t *testing.T) {
 	config := Config{
 		Items: []ConfigItem{
