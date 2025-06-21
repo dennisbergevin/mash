@@ -1,4 +1,5 @@
 .DS_Store
 mash
+mash.exe
 .mash.json
 dist/

@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -23,8 +24,13 @@ type Config struct {
 }
 
 func loadConfig(useGlobal bool) (Config, error) {
+	homeDir, err := os.UserHomeDir()
+	if err != nil {
+		return Config{}, fmt.Errorf("failed to get user home directory: %w", err)
+	}
+
 	if useGlobal {
-		globalPath := filepath.Join(os.Getenv("HOME"), ".config", "mash", "config.json")
+		globalPath := filepath.Join(homeDir, ".config", "mash", "config.json")
 		return loadConfigFile(globalPath)
 	}
 
@@ -45,7 +51,8 @@ func loadConfig(useGlobal bool) (Config, error) {
 		dir = parent
 	}
 
-	globalPath := filepath.Join(os.Getenv("HOME"), ".config", "mash", "config.json")
+	// Fallback to global config
+	globalPath := filepath.Join(homeDir, ".config", "mash", "config.json")
 	return loadConfigFile(globalPath)
 }
 
