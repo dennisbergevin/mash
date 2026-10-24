@@ -1,8 +1,6 @@
 module mash
 
-go 1.23.0
-
-toolchain go1.23.10
+go 1.26.10
 
 require (
 	github.com/charmbracelet/bubbles v0.21.0
